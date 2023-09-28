@@ -1,0 +1,85 @@
+<html>
+   <title>Fibonacci Sequence Generator</title>
+   <body>
+       <style>
+           .content {
+              padding:10px 5px;
+              background-color:darkblue;
+              font-family:cursive;
+              text-align:center;
+              color:pink;
+              font-size:20px
+           }
+           .operation_buttons{
+              padding:12px 6px;
+              background-color:darkblue;
+           }
+           #generate {
+              padding:10px 5px;
+              background-color:violet;
+              font-family:courier bold;
+              font-size:20px;
+           }
+           #clear {
+              padding:10px 5px;
+              background-color:orange;
+              font-family:courier bold;
+              font-size:20px;
+           }
+           .answer_section {
+              padding:3px 30px;
+              background-color:darkblue;
+           }
+           #answer {
+              font-family:courier bold;
+              color:white;
+              font-size:18px;
+           }
+           #no_of_terms {
+              font-family:courier bold;
+              font-size:20px;
+              color:white;
+           }
+       </style>
+       <div class="content">
+           <h1 id="welcome_text">Fibonacci sequence generator</h1>
+           <p>Welcome to the Fibonacci Sequence generator. This website is designed to generate the Fibonacci sequence. The "generate" button generates the sequence by clicking the button.
+           It generates terms by number of times you click the button. The "clear" button clear everything generated and reset to initial condition.
+           </p>
+       </div>
+       <div class="operation_buttons">
+           <button id="generate">generate</button>
+           <button id="clear">clear</button>
+           <label id="no_of_terms">No of terms:0</label>
+       </div>
+       <div class="answer_section">
+           <p id="answer"></p>
+       </div>
+       <script>
+           var first_term = 0;
+           var second_term = 1;
+           var third_term = first_term + second_term;
+           var i=0;
+           const generate_bt = document.getElementById("generate");
+           const clear_bt = document.getElementById("clear");
+           const answer = document.getElementById("answer");
+           const terms = document.getElementById("no_of_terms");
+           generate_bt.addEventListener("click", function() {
+               i=i+1;
+               terms.textContent = "No of terms:"+i;
+               answer.textContent+=third_term+",";
+               first_term = second_term;
+               second_term = third_term;
+               third_term = first_term + second_term;
+           });
+           clear_bt.addEventListener("click",function() {
+               answer.textContent="";
+               terms.textContent = "No of terms:0";
+               i=0;
+               first_term = 0;
+               second_term = 1;
+               third_term = first_term + second_term;
+           });
+       </script>
+   </body>
+</html>
