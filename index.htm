@@ -3,7 +3,7 @@
    <body>
        <style>
            .content {
-              padding:10px 5px;
+              padding:2px;
               background-color:darkblue;
               font-family:cursive;
               text-align:center;
@@ -11,71 +11,127 @@
               font-size:20px
            }
            .operation_buttons{
-              padding:12px 6px;
+              padding:5px;
               background-color:darkblue;
+              text-align:center;
            }
            #generate {
-              padding:10px 5px;
+              padding:8px;
               background-color:violet;
               font-family:courier bold;
               font-size:20px;
            }
            #clear {
-              padding:10px 5px;
+              padding:8px;
               background-color:orange;
               font-family:courier bold;
               font-size:20px;
            }
            .answer_section {
-              padding:3px 30px;
+              padding:3px 3px;
               background-color:darkblue;
            }
            #answer {
               font-family:courier bold;
               color:white;
-              font-size:18px;
+              font-size:25px;
            }
            #no_of_terms {
               font-family:courier bold;
               font-size:20px;
               color:white;
            }
+           #formula {
+              padding:2px;
+              font-family:courier bold;
+              color:white;
+              text-align:center;
+           }
+           #formula_demo {
+              padding:2px;
+              font-family:impact bold;
+              text-align:center;
+              color:white;
+           }
+           .explanation {
+              padding:2px;
+              background-color:darkblue;
+              font-family:cursive;
+              color:pink;
+              font-size:20px;
+           }
+           .demo {
+              padding:5px;
+              background-color:darkblue;
+              font-family:courier bold;
+              color:white;
+           }
+           #definition {font-family:Arial;color:yellow;font-size:25px;}
+           #formula {font-family:Times New Roman;font-size:35px;color:yellow;}
+           #formula_demo {font-size:30px;}
+           #formula_explanation {
+              font-size:18px;
+              font-family:cursive;
+            }
+           #welcome_text {
+              font-family:Times New Roman;
+              color:yellow;
+           }
        </style>
        <div class="content">
-           <h1 id="welcome_text">Fibonacci sequence generator</h1>
+           <h1 id="welcome_text">FIBONACCI SEQUENCE GENERATOR</h1>
            <p>Welcome to the Fibonacci Sequence generator. This website is designed to generate the Fibonacci sequence. The "generate" button generates the sequence by clicking the button.
-           It generates terms by number of times you click the button. The "clear" button clear everything generated and reset to initial condition.
+           It generates terms by number of times you click the button. The "clear" button clear everything generated and reset to initial condition. Fib
            </p>
+           <p id="definition">
+               The <a href="https://en.m.wikipedia.org/wiki/Fibonacci_sequence">Fibonacci sequence</a> is sequence in which each number is
+               the sum of preceding ones.
+           </p>
+       </div>
+       <div class="explanation">
+           <p id="logic">The sequence starts with first two numbers T(1)=0, T(2)=1.
+               The more general way of denoting the logic is,
+           </p>
+       </div>
+       <div class="demo">
+           <p id="formula">T(n)=T(n-1)+T(n-2).</p>
+           <p id="formula_demo">T(3)=T(2)+T(1)</p>
+           <p id="formula_explanation">
+               The T(n) represents the nth term (i.e. like first, second, third...).
+           </p>
+       </div>
+       <div class="answer_section">
+           <p id="answer">0,1,</p>
        </div>
        <div class="operation_buttons">
            <button id="generate">generate</button>
            <button id="clear">clear</button>
-           <label id="no_of_terms">No of terms:0</label>
-       </div>
-       <div class="answer_section">
-           <p id="answer"></p>
+           <label id="no_of_terms">No of terms:2</label>
        </div>
        <script>
            var first_term = 0;
            var second_term = 1;
            var third_term = first_term + second_term;
-           var i=0;
+           var i=2;
            const generate_bt = document.getElementById("generate");
            const clear_bt = document.getElementById("clear");
            const answer = document.getElementById("answer");
            const terms = document.getElementById("no_of_terms");
+           const demo = document.getElementById("formula_demo");
            generate_bt.addEventListener("click", function() {
                i=i+1;
                terms.textContent = "No of terms:"+i;
                answer.textContent+=third_term+",";
+               demo.textContent="T("+i+")=T("+(i-1)+")+T("+(i-2)+")="+second_term+"+"+first_term+"="+third_term;
                first_term = second_term;
                second_term = third_term;
                third_term = first_term + second_term;
            });
            clear_bt.addEventListener("click",function() {
-               answer.textContent="";
-               terms.textContent = "No of terms:0";
-               i=0;
+               answer.textContent="0,1,";
+               terms.textContent = "No of terms:2";
+               demo.textContent="T(3)=T(2)+T(1)"
+               i=2;
                first_term = 0;
                second_term = 1;
                third_term = first_term + second_term;
